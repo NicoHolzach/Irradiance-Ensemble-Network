@@ -41,34 +41,44 @@ The structure of this repository is as follows:
 │   ├── datasets                      # Directory containing all original and
 │   │   │                               processed data used in this analysis.
 │   │   │ 
-│   │   ├── Folsom_irradiance.csv     # CSV file containing the original irradiance data (Pedro et al., 2019).
+│   │   ├── Folsom_irradiance.csv     # CSV file containing the original irradiance data.
 │   │   │ 
-│   │   ├── Folsom_weather.csv        # CSV file containing the original weather data (Pedro et al., 2019).
+│   │   ├── Folsom_weather.csv        # CSV file containing the original weather data.
 │   │   │ 
-│   │   ├── skyimages                 # Directory containing the original sky image data (Pedro et al., 2019).
+│   │   ├── skyimages                 # Directory containing the original sky image data.
 │   │   │ 
-│   │   ├── data_for_analysis         # Directory containing the data produced by data.py that are used to train the models.
+│   │   ├── data_for_analysis         # Directory containing the data produced by data.py
+│   │       │                           that are used to train and evaluate the models.
 │   │       │
-│   │       ├── images                # Directory containing the input data (X) and their timestamps (t) for the images CNN model.
+│   │       ├── images                # Directory containing the input data (X) and
+│   │       │                           their timestamps (t) for the images CNN model.
 │   │       │
-│   │       ├── images3d              # Directory containing the input data (X) and their timestamps (t) for the images3d CNN model.
+│   │       ├── images3d              # Directory containing the input data (X) and
+│   │       │                           their timestamps (t) for the images3d CNN model.
 │   │       │
-│   │       ├── irradiance            # Directory containing the input data (X) and their timestamps (t) for the irradiance LSTM model.
+│   │       ├── irradiance            # Directory containing the input data (X) and
+│   │       │                           their timestamps (t) for the irradiance LSTM model.
 │   │       │
-│   │       ├── weather               # Directory containing the input data (X) and their timestamps (t) for the weather LSTM model.
+│   │       ├── weather               # Directory containing the input data (X) and
+│   │       │                           their timestamps (t) for the weather LSTM model.
 │   │       │
-│   │       ├── targets               # Directory containing the target data (y) and their timestamps to train and evaluate the models.
+│   │       ├── targets               # Directory containing the target data (y) and
+│   │       │                           their timestamps to train and evaluate the models.
 │   │       │
-│   │       ├── predictions           # Directory containing the predictions of the individual models for all:
-│   │                                   - data types (images, imaged3d, irradiance, weather, combined)
+│   │       ├── predictions           # Directory containing the predictions and
+│   │                                 # their timestamps of the individual models for all:
+│   │                                   - data types (images, imaged3d, irradiance, ...)
 │   │                                   - data set splits (training, validation, testing)
-│   │                                   - forecast horizons (15 min, 30 min, ..., 2 h, ..., 3 d)
+│   │                                   - forecast horizons (15 min, ..., 2 h, ..., 3 d)
 │   │                                 
-│   ├── parameters                    # Directory containing the trained model parameters for all 3069 models.
-│   │   │                               Note that each of the following subdirectories contains a .pkl files that
-│   │   │                               indexes each layer architecture for each model type.
-│   │   │                               Also note that the parameters are further divided into subdirectories,
-│   │   │                               which are not included in this repository for the sake of cleanliness.
+│   ├── parameters                    # Directory containing the trained model parameters for
+│   │   │                               all 3069 models. Note that each of tits subdirectories 
+│   │   │                               contains a .pkl files that indexes each layer
+│   │   │                               architecture for each model type.
+│   │   │
+│   │   │                               Also note that its subdirectories are further divided 
+│   │   │                               into subdirectories, which are not included in this
+│   │   │                               repository for the sake of cleanliness.
 │   │   │ 
 │   │   │                               For example, imagine an LSTM irradiance model trained on:
 │   │   │                               - delta=1, length=10, forecast horizon=30min
@@ -77,33 +87,40 @@ The structure of this repository is as follows:
 │   │   │                               Its trained model parameters would be stored in this subdirectory:
 │   │   │                               ./parameters/irradiance/irradiance_layers_51/delta_1/length_10/y_30
 │   │   │ 
-│   │   ├── combined                  # Directory containing the trained model parameters of the combined LSTM model for all
-│   │   │                               layer architectures, inputs, forecast horizons, and hyperparameter combinations.
+│   │   ├── combined                  # Directory containing the trained model parameters 
+│   │   │                               of the combined LSTM model for all layer architectures,
+│   │   │                               inputs, forecast horizons, and hyperparameter combinations.
 │   │   │ 
-│   │   ├── ensemble                  # Directory containing the trained model parameters of the ensemble NN model for all
-│   │   │                               layer architectures, inputs, forecast horizons, and hyperparameter combinations.
+│   │   ├── ensemble                  # Directory containing the trained model parameters 
+│   │   │                               of the ensemble NN model for all layer architectures,
+│   │   │                               inputs, forecast horizons, and hyperparameter combinations.
 │   │   │ 
-│   │   ├── images                    # Directory containing the trained model parameters of the images CNN model for all
-│   │   │                               layer architectures, inputs, forecast horizons, and hyperparameter combinations.
+│   │   ├── images                    # Directory containing the trained model parameters 
+│   │   │                               of the images CNN model for all layer architectures,
+│   │   │                               inputs, forecast horizons, and hyperparameter combinations.
 │   │   │ 
-│   │   ├── images3d                  # Directory containing the trained model parameters of the images3d CNN model for all
-│   │   │                               layer architectures, inputs, forecast horizons, and hyperparameter combinations.
+│   │   ├── images3d                  # Directory containing the trained model parameters 
+│   │   │                               of the images3d CNN model for all layer architectures,
+│   │   │                               inputs, forecast horizons, and hyperparameter combinations.
 │   │   │ 
-│   │   ├── irradiance                # Directory containing the trained model parameters of the irradiance LSTM model for all
-│   │   │                               layer architectures, inputs, forecast horizons, and hyperparameter combinations.
+│   │   ├── irradiance                # Directory containing the trained model parameters 
+│   │   │                               of the irradiance LSTM model for all layer architectures,
+│   │   │                               inputs, forecast horizons, and hyperparameter combinations.
 │   │   │ 
-│   │   ├── weather                   # Directory containing the trained model parameters of the weather LSTM model for all
-│   │                                   layer architectures, inputs, forecast horizons, and hyperparameter combinations.
-│   │       
-│   ├── performance                   # Directory containing the mini-batch training and validation RMSEs per epoch
-│       │                               for each of the 3069 trained models.
-│       │                               Note that this directory and its subdirectories follow the same structure as ./parameters.
+│   │   ├── weather                   # Directory containing the trained model parameters 
+│   │                                   of the weather LSTM model for all layer architectures,
+│   │                                   inputs, forecast horizons, and hyperparameter combinations.
+│   │    
+│   ├── performance                   # Directory containing the mini-batch training and validation
+│       │                               RMSEs per epoch for each of the 3069 trained models.
+│       │                               Note that this directory and its subdirectories follow
+│       │                               the same structure as ./parameters.
 │       │
 │       │                               For example, imagine an LSTM irradiance model trained on:
 │       │                               - delta=1, length=10, forecast horizon=30min
 │       │                               - with a layer architecture indexed by 51
 │       │
-│       │                               Its mini-batch training and validatoin RMSEs would be stored in this subdirectory:
+│       │                               Its mini-batch train. and val. RMSEs would be stored in this subdirectory:
 │       │                               ./performance/irradiance/irradiance_layers_51/delta_1/length_10/y_30
 │       │
 │       ├── combined                  # Directory containing the mini-batch RMSEs of the combined LSTM model for all
