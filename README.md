@@ -11,27 +11,35 @@ The structure of this repository is as follows:
 ```
 .
 ├── ...
-├── irradiance_pred                   # Root directory containing all the files of the solar irradiance prediction analysis.
+├── irradiance_pred                   # Root directory containing all the files of the
+│   │                                   solar irradiance prediction analysis.
+│   │  
+│   ├── main.py                       # Python file that uses all the relevant functions 
+│   │                                   from the other Python files to conduct the analysis
+│   │                                   that is described in the paper.
 │   │                                  
-│   ├── main.py                       # Python file that uses all the relevant functions from the other Python files
-│   │                                   to conduct the analysis that is described in the paper.
+│   ├── data.py                       # Python file containing all the classes and functions
+│   │                                   that process the original data to create the
+│   │                                   different data combinations used to train the models.
 │   │                                  
-│   ├── data.py                       # Python file containing all the classes and functions that process the original data
-│   │                                   to create the different data combinations used to train the models.
+│   ├── getperformance.py             # Python file containing functions that aggregate 
+│   │                                   the forecast errors of the models and finds the
+│   │                                   best-performing parameters of the trained models.
 │   │                                  
-│   ├── getperformance.py             # Python file containing functions that aggregate thes forecast errors of the models
-│   │                                   and finds the best-performing parameters of the trained models.
+│   ├── models.py                     # Python file that defines the classes of the CNN, LSTM, 
+│   │                                   and NN models. It also contains the functions that 
+│   │                                   define the different steps of the training process.
 │   │                                  
-│   ├── models.py                     # Python file that defines the classes of the CNN, LSTM, and NN models. It also contains
-│   │                                   the functions that define the different steps of the training process.
+│   ├── plotting.py                   # Python file containing all the functions 
+│   │                                   used to plot the different graphs that are shown
+│   │                                   in the paper.
 │   │                                  
-│   ├── plotting.py                   # Python file containing all the functions used to plot the different graphs
-│   │                                   that are used in the paper.
+│   ├── plotting.py                   # Python file containing all the functions 
+│   │                                   to pre-process the different data types and
+│   │                                   to split them into train/val/test sets.
 │   │                                  
-│   ├── plotting.py                   # Python file containing the functions to pre-process the different data types
-│   │                                   and to split them into train/val/test sets.
-│   │                                  
-│   ├── datasets                      # Directory containing all original and processed data used in this analysis.
+│   ├── datasets                      # Directory containing all original and
+│   │   │                               processed data used in this analysis.
 │   │   │ 
 │   │   ├── Folsom_irradiance.csv     # CSV file containing the original irradiance data (Pedro et al., 2019).
 │   │   │ 
