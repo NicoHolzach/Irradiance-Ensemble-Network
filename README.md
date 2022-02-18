@@ -150,7 +150,7 @@ The structure of this repository is as follows:
 .
 ```
 
-Please note that due to the file sizes of the data and model parameters, this repository only contains the Python files and the directories to convey the basic structure of the overall analysis. It does *not* include the actual data and model parameters. The directories in this repository *do* include paceholder files that mimick these original files.
+Please note that due to the file sizes of the data and model parameters, this repository only contains the Python files and the directories to convey the basic structure of the overall analysis. It does *not* include the actual data and model parameters. The directories in this repository *do* include paceholder files that illustrate these original files.
 
 
 #### Source of the original irradiance, weather, and sky image data:
