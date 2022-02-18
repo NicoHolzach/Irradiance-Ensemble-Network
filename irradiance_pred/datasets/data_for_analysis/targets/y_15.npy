@@ -1,0 +1,12 @@
+This is a placeholder for the actual y_15.npy file.
+
+The actual file contains all true GHI targets for the 15-min ahead forecast horizon.
+The actual folder would contain more files for the other forecast horizons.
+
+It is saved by the method .create_targets() of the DataSet() class inside data.py.
+This file, among others, is read by the method .get_data() of the DataSet() class
+and it returns the aligned X, y, and timestamp data for a specified data type.
+
+These X, y, and timestamps can then be used as input to
+the split_and_preprocess() function inside preprocessing.py
+to produce training, validation, and testing data sets.
