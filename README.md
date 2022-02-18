@@ -23,7 +23,7 @@ The structure of this repository is as follows:
 │   │                                   different data combinations used to train the models.
 │   │                                  
 │   ├── getperformance.py             # Python file containing functions that aggregate 
-│   │                                   the forecast errors of the models and finds the
+│   │                                   the forecast errors of the models and find the
 │   │                                   best-performing parameters of the trained models.
 │   │                                  
 │   ├── models.py                     # Python file that defines the classes of the CNN, LSTM, 
@@ -63,16 +63,16 @@ The structure of this repository is as follows:
 │   │       │                           their timestamps (t) for the weather LSTM model.
 │   │       │
 │   │       ├── targets               # Directory containing the target data (y) and
-│   │       │                           their timestamps to train and evaluate the models.
+│   │       │                           their timestamps (t) to train and evaluate the models.
 │   │       │
-│   │       ├── predictions           # Directory containing the predictions and
-│   │                                   their timestamps of the individual models for all:
+│   │       ├── predictions           # Directory containing the predictions (y_hat) and
+│   │                                   their timestamps (t) of the individual models for all:
 │   │                                   - data types (images, imaged3d, irradiance, ...)
 │   │                                   - data set splits (training, validation, testing)
 │   │                                   - forecast horizons (15 min, ..., 2 h, ..., 3 d)
 │   │                                 
 │   ├── parameters                    # Directory containing the trained model parameters for
-│   │   │                               all 3069 models. Note that each of tits subdirectories 
+│   │   │                               all 3069 models. Note that each of its subdirectories 
 │   │   │                               contains a .pkl files that indexes each layer
 │   │   │                               architecture for each model type.
 │   │   │
@@ -150,7 +150,7 @@ The structure of this repository is as follows:
 .
 ```
 
-Please note that due to the file size of the data and model parameters, this repository only contains the Python files and the directories to convey the basic structure of the overall analysis. It does NOT include the actual data and model parameters. The directories in this repository DOES include paceholder files that mimick these original files.
+Please note that due to the file sizes of the data and model parameters, this repository only contains the Python files and the directories to convey the basic structure of the overall analysis. It does *not* include the actual data and model parameters. The directories in this repository *do* include paceholder files that mimick these original files.
 
 
 #### Source of the original irradiance, weather, and sky image data:
