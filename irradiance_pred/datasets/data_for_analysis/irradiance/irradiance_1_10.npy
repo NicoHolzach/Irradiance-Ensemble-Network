@@ -3,8 +3,8 @@ This is a placeholder for the actual irradiance_1_10.npy file.
 The actual file contains all irradiance sequences with a delta=1, length=10 used in this analysis.
 The actual folder would contain more files for the other delta-length combinations.
 
-It is saved by the method .save_data() of the DataSet() class inside data.py.
-This file, among others, is read by the method .get_data() of the DataSet() class
+This file is saved by the method .save_data() of the DataSet() class inside data.py.
+It, among others, is read by the method .get_data() of the DataSet() class
 and it returns the aligned X, y, and timestamp data for the irradiance sequences.
 
 These X, y, and timestamps can then be used as input to
