@@ -2,8 +2,8 @@
 
 This is the github repository containing all the necessary Python files and the structure of the directories for the analysis that trained and evaluated solar irradiance neural network ensemble forecasting models in the following paper: 
 
-# *CNN, LSTM, and Ensemble Neural Network  Solar Irradiance Forecasting:* <br />
-# *Assessing the Impact  of Model Architecture, Input Type,  and Forecast Horizon*
+### *CNN, LSTM, and Ensemble Neural Network  Solar Irradiance Forecasting:* <br />
+### *Assessing the Impact  of Model Architecture, Input Type,  and Forecast Horizon*
 
 
 The structure of this repository is as follows:
@@ -121,7 +121,7 @@ The structure of this repository is as follows:
 Please note that due to the file size of the data and model parameters, this repository only contains the Python files and the directories to convey the basic structure of the overall analysis. It does NOT include the actual data and model parameters. The directories in this repository DOES include paceholder files that mimick these original files.
 
 
-# Source of the original irradiance, weather, and sky image data:
+### Source of the original irradiance, weather, and sky image data:
 
 Pedro, H. T. C., Larson, D. P., and Coimbra, C. F. M. (2019). A comprehensive dataset
 for the accelerated development and benchmarking of solar forecasting methods.
