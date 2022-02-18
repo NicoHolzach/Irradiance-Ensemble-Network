@@ -1,0 +1,12 @@
+This is a placeholder for the actual irradiance_1_10_time.npy file.
+
+The actual file contains all timestamps that are aligned with the data in irradiance_1_10.npy
+The actual folder would contain more timestamp files for the other delta-length combinations.
+
+This file is saved by the method .save_data() of the DataSet() class inside data.py.
+It, among others, is read by the method .get_data() of the DataSet() class
+and it returns the aligned X, y, and timestamp data for the irradiance sequences.
+
+These X, y, and timestamps can then be used as input to
+the split_and_preprocess() function inside preprocessing.py
+to produce training, validation, and testing data sets.
