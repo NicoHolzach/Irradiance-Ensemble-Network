@@ -5,7 +5,7 @@ The actual folder would contain more files for the other delta-length combinatio
 
 It is saved by the method .save_data() of the DataSet() class inside data.py.
 This file is read by the method .get_data() of the DataSet() class
-and it returns the aligned X, y, and timestamp data for the sky images.
+and it returns the aligned X, y, and timestamp data for the sky image sequences.
 
 These X, y, and timestamps can then be used as input to
 the split_and_preprocess() function inside preprocessing.py
