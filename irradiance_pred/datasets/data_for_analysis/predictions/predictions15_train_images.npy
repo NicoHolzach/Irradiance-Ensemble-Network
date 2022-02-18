@@ -1,0 +1,14 @@
+This is a placeholder for the actual predictions15_train_images.npy file.
+
+The actual file contains all the 15-min-ahead predictions on the training set of the model trained on images.
+The actual folder would contain more files for the other data splits (validation, testing),
+for the other data types (images3d, irradiance, weather, combined), and for the other forecast horizons.
+
+For example, the folder would also contain the file: predictions120_test_weather.py
+for the 2-hour-ahead predictions on the test set of the weather model.
+
+This file is saved by the create_prediction_data() function inside data.py.
+It, among others, is then read by the get_ensemble_data() function inside data.py.
+
+This can then be used to calculate the forecast error of each individual model
+and to aggregate their predictions to be used by the ensemble models.
