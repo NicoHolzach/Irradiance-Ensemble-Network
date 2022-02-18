@@ -66,7 +66,7 @@ The structure of this repository is as follows:
 │   │       │                           their timestamps to train and evaluate the models.
 │   │       │
 │   │       ├── predictions           # Directory containing the predictions and
-│   │                                 # their timestamps of the individual models for all:
+│   │                                   their timestamps of the individual models for all:
 │   │                                   - data types (images, imaged3d, irradiance, ...)
 │   │                                   - data set splits (training, validation, testing)
 │   │                                   - forecast horizons (15 min, ..., 2 h, ..., 3 d)
@@ -123,23 +123,30 @@ The structure of this repository is as follows:
 │       │                               Its mini-batch train. and val. RMSEs would be stored in this subdirectory:
 │       │                               ./performance/irradiance/irradiance_layers_51/delta_1/length_10/y_30
 │       │
-│       ├── combined                  # Directory containing the mini-batch RMSEs of the combined LSTM model for all
-│       │                               layer architectures, inputs, forecast horizons, and hyperparameter combinations.
+│       ├── combined                  # Directory containing the mini-batch RMSEs of the
+│       │                               combined LSTM model for all layer architectures,
+│       │                               inputs, forecast horizons, and hyperparameter combinations.
 │       │
-│       ├── ensemble                  # Directory containing the mini-batch RMSEs of the ensemble NN model for all
-│       │                               layer architectures, inputs, forecast horizons, and hyperparameter combinations.
+│       ├── ensemble                  # Directory containing the mini-batch RMSEs of the
+│       │                               ensemble NN model for all layer architectures,
+│       │                               inputs, forecast horizons, and hyperparameter combinations.
 │       │
-│       ├── images                    # Directory containing the mini-batch RMSEs of the images CNN model for all
-│       │                               layer architectures, inputs, forecast horizons, and hyperparameter combinations.
+│       ├── images                    # Directory containing the mini-batch RMSEs of the
+│       │                               images CNN model for all layer architectures,
+│       │                               inputs, forecast horizons, and hyperparameter combinations.
 │       │
-│       ├── images3d                  # Directory containing the mini-batch RMSEs of the images3d CNN model for all
-│       │                               layer architectures, inputs, forecast horizons, and hyperparameter combinations.
+│       ├── images3d                  # Directory containing the mini-batch RMSEs of the
+│       │                               images3d CNN model for all layer architectures,
+│       │                               inputs, forecast horizons, and hyperparameter combinations.
 │       │
-│       ├── irradiance                # Directory containing the mini-batch RMSEs of the irradiance LSTM model for all
-│       │                               layer architectures, inputs, forecast horizons, and hyperparameter combinations.
+│       ├── irradiance                # Directory containing the mini-batch RMSEs of the
+│       │                               irradiance LSTM model for all layer architectures,
+│       │                               inputs, forecast horizons, and hyperparameter combinations.
 │       │
-│       ├── weather                   # Directory containing the mini-batch RMSEs of the weather LSTM model for all
-│                                      layer architectures, inputs, forecast horizons, and hyperparameter combinations.
+│       ├── weather                   # Directory containing the mini-batch RMSEs of the
+│                                       weather LSTM model for all layer architectures,
+│                                       inputs, forecast horizons, and hyperparameter combinations.
+│       
 .
 ```
 
