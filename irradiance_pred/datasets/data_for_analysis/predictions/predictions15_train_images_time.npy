@@ -1,0 +1,11 @@
+This is a placeholder for the actual predictions15_train_images_time.npy file.
+
+The actual file contains all timestamps that are aligned with the data in predictions15_train_images.npy
+The actual folder would contain more timestamp files for the other data splits (validation, testing),
+for the other data types (images3d, irradiance, weather, combined), and for the other forecast horizons.
+
+This file is saved by the create_prediction_data() function inside data.py.
+It, among others, is then read by the get_ensemble_data() function inside data.py.
+
+This can then be used to calculate the forecast error of each individual model
+and to aggregate their predictions to be used by the ensemble models.
