@@ -784,6 +784,7 @@ def read_weather_data():
 
 	return weather
 
+
 # Define a function that reads in the sky image data 
 # either from original source files or from an already
 # created pickle file containing all images.
@@ -928,6 +929,7 @@ def read_image_data(from_pkl, year_list=None, month_list=None):
 
 		return existing_data
 
+
 # Define a function that rounds a timestamp to the nearest minute.
 def roundTime(dt=None, roundTo=60):
    """
@@ -943,6 +945,7 @@ def roundTime(dt=None, roundTo=60):
    seconds = (dt.replace(tzinfo=None) - dt.min).seconds
    rounding = (seconds+roundTo/2) // roundTo * roundTo
    return dt + datetime.timedelta(0,rounding-seconds,-dt.microsecond)
+
 
 # Define a function that creates an object using our DataSet class
 # for the specified type of data by either reading in the already
