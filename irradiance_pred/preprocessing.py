@@ -303,8 +303,3 @@ def create_dataloader(X_train, X_val, y_train, y_val, batch_size, images_bool, G
 	return (train_loader, val_loader)
 
 
-
-	
-
-
-

@@ -2656,7 +2656,3 @@ def extract_layer_param(x, param):
     except KeyError:
         return None
 
-
-
-    
-            

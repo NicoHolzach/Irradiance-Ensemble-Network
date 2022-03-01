@@ -855,6 +855,16 @@ def train_multiple_models(modeltype, datatype, sample, sample_size, GPU,
                     # True to the skip_training variable.
                     skip_training = existence_hyperparams['early_stopping']
                     skip_training = str_to_bool(skip_training) #turns string to actual bool
+
+                    # If the early stopping parameter is True but we also don't want to use
+                    # early-stopping in this training round AND we dont't want to train from scratch,
+                    # this means we most likely already trained the model using no early-stoppingrule.
+                    # Thus, we can also skip training this model.       
+                    if (skip_training == False) \
+                        and (early_stopping == False) \
+                        and (from_scratch == False):
+
+                        skip_training = True
                 
                 # If such a file does not exist, we won't skip training.
                 else:

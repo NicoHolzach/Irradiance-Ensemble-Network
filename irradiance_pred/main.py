@@ -68,13 +68,12 @@ import gc
 import torch
 import importlib
 import itertools
-importlib.reload(data) #use in VSCode to update modules)
+importlib.reload(models) #use in VSCode to update modules
 
 # Ensure that CUDNN is enabled.
 torch.backends.cudnn.benchmark=True
 
 print('hello world :)')
-
 
 
 # SET IMPORTANT GLOBAL VARIABLES
@@ -89,11 +88,11 @@ DATA_FROM_SCRATCH = False   #whether to aggregate data from scratch.
                             #recommended to keep at False.
 
 TRAIN_MODELS = True        #whether to train the models from scratch.
-                            #can be set to True as the functins should
+                            #can be set to True as the functions should
                             #see the already trained parameters in the
                             #./parameters folder.
 
-PLOT_GRAPHS = False         #whether to plot all graphs or not.
+PLOT_GRAPHS = True         #whether to plot all graphs or not.
                             #recommended to keep at False
                             #as aggregating the data for each graph
                             #can take some time.
@@ -103,6 +102,12 @@ PLOT_GRAPHS = False         #whether to plot all graphs or not.
 # Do NOT modify this line.
 os.environ['CUDA_VISIBLE_DEVICES'] = f'{GPU_ID}'
 print(f'Selected GPU #{GPU_ID} for training.')
+
+
+# Also, please note that running this whole code can fill up the GPU.
+# For example, training all individual models across all training steps,
+# i.e., sections 2A, 3A, 4A, and 5A, can fill up the GPU with too much data.
+# Hence, the kernel might need to be restartet inbetween sections.
 
 
 """
@@ -157,6 +162,7 @@ if 'irradiance' not in globals():
                                     from_pkl=True)
 
 # Iterate through horizons and create targets for each of them.
+# The data will be saved in ./datasets/data_for_analysis/targets
 print('Starting to create y targets for different forecast horizons...')
 for horizon in all_horizons:
     
@@ -193,6 +199,7 @@ if 'irradiance' not in globals():
                                     from_pkl=True)
 
 # For all delta-length combinations, create the respective irradiance sequence.
+# The data will be saved in ./datasets/data_for_analysis/irradiance
 print('Starting to create irradiance sequences for different deltas and lengths...')
 for delta, length in itertools.product(all_deltas, all_lengths):
 
@@ -225,6 +232,7 @@ if 'weather' not in globals():
                                     from_pkl=True)
 
 # For all delta-length combinations, create the respective weather sequence.
+# The data will be saved in ./datasets/data_for_analysis/weather
 print('Starting to create weather sequences for different deltas and lengths...')
 for delta, length in itertools.product(all_deltas, all_lengths):
 
@@ -260,6 +268,7 @@ if 'images' not in globals():
                                     from_pkl=True)
 
 # For all delta-length combinations, create the respective skyimage sequence.
+# The data will be saved in ./datasets/data_for_analysis/images3d
 # Note: this can take some time.
 print('Starting to create skyimage sequences for different deltas and lengths...')
 for delta, length in itertools.product(deltas_3d, lengths_3d):
@@ -360,8 +369,8 @@ if TRAIN_MODELS == True:
         hyperparameter_dict=hyperparams,
         loss_fn=models.RMSELoss(),
         layers_only=True, #this speeds up the data loading
-        early_stopping=False,
-        from_scratch=True)
+        early_stopping=False, #we did not implement an early_stopping rule here, yet
+        from_scratch=False)
 
 ################################################################################
 ############# (2A.2) TRAIN 3D CNN ARCHITECTURES W/ DATATYPE = IMAGES3D
@@ -393,8 +402,8 @@ if TRAIN_MODELS == True:
         hyperparameter_dict=hyperparams_3d,
         loss_fn=models.RMSELoss(),
         layers_only=True, #this speeds up the data loading
-        early_stopping=False,
-        from_scratch=True)
+        early_stopping=False, #we did not implement an early_stopping rule here, yet
+        from_scratch=False)
 
 
 ################################################################################
@@ -441,8 +450,8 @@ if TRAIN_MODELS == True:
         hyperparameter_dict=hyperparams,
         loss_fn=models.RMSELoss(),
         layers_only=True, #this speeds up the data loading
-        early_stopping=False,
-        from_scratch=True)
+        early_stopping=False, #we did not implement an early_stopping rule here, yet
+        from_scratch=False)
 
 
 ################################################################################
@@ -468,8 +477,8 @@ if TRAIN_MODELS == True:
         hyperparameter_dict=hyperparams,
         loss_fn=models.RMSELoss(),
         layers_only=True, #this speeds up the data loading
-        early_stopping=False,
-        from_scratch=True)
+        early_stopping=False, #we did not implement an early_stopping rule here, yet
+        from_scratch=False)
 
 
 ################################################################################
@@ -495,8 +504,8 @@ if TRAIN_MODELS == True:
         hyperparameter_dict=hyperparams,
         loss_fn=models.RMSELoss(),
         layers_only=True, #this speeds up the data loading
-        early_stopping=False,
-        from_scratch=True)
+        early_stopping=False, #we did not implement an early_stopping rule here, yet
+        from_scratch=False)
 
 
 """
@@ -893,7 +902,7 @@ if TRAIN_MODELS == True:
         hyperparameter_dict=hyperparams_horizons_3d,
         loss_fn=models.RMSELoss(),
         layers_only=False, #as the data now varies, we cannot use this anymore
-        early_stopping=True,
+        early_stopping=True, #will stop training at convergence
         from_scratch=False) 
 
 
@@ -918,7 +927,7 @@ if TRAIN_MODELS == True:
         hyperparameter_dict=hyperparams_horizons_lstm,
         loss_fn=models.RMSELoss(),
         layers_only=False, #as the data now varies, we cannot use this anymore
-        early_stopping=True,
+        early_stopping=True, #will stop training at convergence
         from_scratch=False)
 
 
@@ -943,7 +952,7 @@ if TRAIN_MODELS == True:
         hyperparameter_dict=hyperparams_horizons_lstm,
         loss_fn=models.RMSELoss(),
         layers_only=False, #as the data now varies, we cannot use this anymore
-        early_stopping=True,
+        early_stopping=True, #will stop training at convergence
         from_scratch=False)
 
 
@@ -968,7 +977,7 @@ if TRAIN_MODELS == True:
         hyperparameter_dict=hyperparams_horizons_lstm,
         loss_fn=models.RMSELoss(),
         layers_only=False, #as the data now varies, we cannot use this anymore
-        early_stopping=True,
+        early_stopping=True, #will stop training at convergence
         from_scratch=False)
 
 
@@ -1064,14 +1073,6 @@ if PLOT_GRAPHS == True:
         lrs=[3e-04]*3, 
         weight_decays=[1e-05]*3,
         min_or_mean='mean') #plot the mean RMSE per delta/length
-
-    plotting.plot_lstm_error_by_delta_length(
-        datatypes=['irradiance', 'weather', 'combined'], 
-        horizons=horizon_buckets,
-        batch_sizes=[128]*3, #same hyperparams for all 3 LSTMs
-        lrs=[3e-04]*3, 
-        weight_decays=[1e-05]*3,
-        min_or_mean='min') #plot the best RMSE per delta/length
 
 # Plot the impact of delta on the RSME for the 3D CNN.
 if PLOT_GRAPHS == True:
@@ -1559,6 +1560,7 @@ if PLOT_GRAPHS == True:
         datatypes=all_datatypes,
         horizons=horizon_buckets)
 
+
 ################################################################################
 ############# (4B.3) CHECK VALIDATION ERROR PER BEST HYPERPARAMETER
 ################################################################################
@@ -1954,7 +1956,7 @@ if TRAIN_MODELS == True:
         layers_only=False, 
         early_stopping=True, #will stop training at convergence
         from_scratch=False)
-        
+   
 
 ################################################################################
 ############# (5A.3) TRAINING THE BEST IRRADIANCE MODELS ON ALL HORIZONS
@@ -2305,7 +2307,7 @@ if PLOT_GRAPHS == True:
         sample_size=0.001, #to make scatterplot readable
         datatypes=all_datatypes,
         horizons=horizon_buckets, #30mins, 2hours, 1day horizons
-        which_set='train') #plot the errors on the validation set
+        which_set='train') #plot the errors on the train set
 
 
 ################################################################################
@@ -2445,7 +2447,8 @@ print(coef_df)
 ############# (7.4) PLOT LINEAR COEFFICIENTS PER HORIZON
 ################################################################################
 
-# Let's now plot these coefficients for all forecast horizons.
+# Let's now plot these coefficients for all forecast horizons
+# and for linear baselines that are trained on increasingly more data.
 if PLOT_GRAPHS == True:
 
     plotting.plot_linear_coef(

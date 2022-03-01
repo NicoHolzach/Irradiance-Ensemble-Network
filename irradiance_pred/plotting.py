@@ -2266,6 +2266,7 @@ def plot_linear_coef(horizons):
             title = 'predictions'
         else:
             title = data.replace('__', '+')
+            title = title.replace('weather', 'climate')
 
         # Plot the data by iterating through each coefficient.
         for j, coef in enumerate(coef_df.index):
